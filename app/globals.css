@@ -1,26 +1,101 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-ink: #14101f;
+  --color-ink-deep: #0f0b1a;
+  --color-plum: #181226;
+  --color-plum-light: #241a3c;
+  --color-card: #1d1733;
+  --color-orange: #ef6c1a;
+  --color-orange-light: #ff8a3d;
+  --color-green: #6fa653;
+  --color-cream: #f4ecdb;
+  --color-cream-warm: #f8f1e4;
+  --color-purple-light: #cdbce0;
+  --color-purple-muted: #c5b6d6;
+  --color-purple-dim: #9d8eb3;
+  --color-purple-dimmer: #a596bc;
+  --color-purple-faint: #8d7da3;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--color-ink);
+  --color-ink-deep: var(--color-ink-deep);
+  --color-plum: var(--color-plum);
+  --color-plum-light: var(--color-plum-light);
+  --color-card: var(--color-card);
+  --color-orange: var(--color-orange);
+  --color-orange-light: var(--color-orange-light);
+  --color-green: var(--color-green);
+  --color-cream: var(--color-cream);
+  --color-cream-warm: var(--color-cream-warm);
+  --color-purple-light: var(--color-purple-light);
+  --color-purple-muted: var(--color-purple-muted);
+  --color-purple-dim: var(--color-purple-dim);
+  --color-purple-dimmer: var(--color-purple-dimmer);
+  --color-purple-faint: var(--color-purple-faint);
+
+  --font-display: var(--font-shippori), serif;
+  --font-body: var(--font-zen-kaku), sans-serif;
+  --font-mono: var(--font-space-mono), monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ink);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-orange);
+  color: var(--color-ink);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@keyframes flap {
+  0%, 100% { transform: rotate(-18deg); }
+  50% { transform: rotate(14deg); }
+}
+
+@keyframes flapR {
+  0%, 100% { transform: rotate(18deg); }
+  50% { transform: rotate(-14deg); }
+}
+
+@keyframes scrollcue {
+  0% { transform: translateY(0); opacity: .2; }
+  50% { opacity: 1; }
+  100% { transform: translateY(10px); opacity: .2; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 108, 26, .5); }
+  50% { box-shadow: 0 0 0 14px rgba(239, 108, 26, 0); }
+}
+
+.bird {
+  display: inline-block;
+  width: 13px;
+  height: 2px;
+  background: #1c1424;
+  border-radius: 2px;
+}
+
+.bird-left {
+  transform-origin: right;
+  animation: flap 0.9s ease-in-out infinite;
+}
+
+.bird-right {
+  transform-origin: left;
+  animation: flapR 0.9s ease-in-out infinite;
 }
