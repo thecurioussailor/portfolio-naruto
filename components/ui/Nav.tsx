@@ -54,14 +54,23 @@ export default function Nav() {
             <button
               key={link.id}
               onClick={() => scrollToSection(link.id)}
-              className="cursor-pointer text-[12px] tracking-[0.22em] uppercase transition-colors duration-250"
+              className="cursor-pointer rounded-full px-[14px] py-[6px] text-[12px] tracking-[0.22em] uppercase transition-colors duration-250"
               style={{
                 color:
                   activeSection === link.id
                     ? "#ef6c1a"
                     : scrolled
                       ? "#5a4f6b"
-                      : "#b9a8c9",
+                      : "#e8ddf5",
+                background: scrolled
+                  ? "transparent"
+                  : "rgba(255,255,255,0.08)",
+                backdropFilter: scrolled ? "none" : "blur(8px)",
+                border: scrolled
+                  ? "none"
+                  : activeSection === link.id
+                    ? "1px solid rgba(239,108,26,0.4)"
+                    : "1px solid rgba(255,255,255,0.12)",
               }}
             >
               {link.label}
@@ -73,7 +82,7 @@ export default function Nav() {
             onClick={() => scrollToSection("summon")}
             initial={{ boxShadow: "0 0px 0px rgba(239,108,26,0)" }}
             whileHover={{ y: -2, boxShadow: "0 6px 20px rgba(239,108,26,.45)" }}
-            className="cursor-pointer rounded-sm bg-orange px-11 py-[9px] font-mono text-[12px] font-bold tracking-[0.16em] text-ink uppercase"
+            className="cursor-pointer rounded-full border-4 border-white/60 bg-orange px-11 py-[9px] font-mono text-[12px] font-bold tracking-[0.16em] text-ink uppercase"
           >
             Summon Me
           </motion.button>

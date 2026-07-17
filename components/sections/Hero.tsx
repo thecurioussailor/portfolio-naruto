@@ -120,52 +120,41 @@ export default function Hero() {
         className="absolute inset-0 z-5 flex max-w-[760px] flex-col justify-center pr-10 pl-[7vw] will-change-transform"
         style={{ y: heroContentY, opacity: heroOpacity }}
       >
-        <div className="mb-[26px] flex items-center gap-[14px]">
+        <div className="mb-[38px] flex items-center gap-[14px]">
           <span className="h-px w-[46px] bg-orange" />
           <span className="font-mono text-xs tracking-[0.42em] text-orange-light uppercase">
-            Portfolio Quest · 2026
+            Portfolio Quest · Current Arc
           </span>
         </div>
-        <h1 className="font-display text-[clamp(48px,8vw,108px)] leading-[0.94] font-extrabold tracking-tight text-cream-warm text-shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+        <h1 className="font-display text-[clamp(42px,5.5vw,82px)] leading-[0.94] font-extrabold tracking-tight text-cream-warm text-shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
           ASHUTOSH
           <br />
           <span className="text-orange-light">SAGAR</span>
         </h1>
-        <div className="font-display mt-2 text-[clamp(15px,1.5vw,19px)] tracking-[0.32em] text-purple-light">
-          疾風伝 — THE WIND CHRONICLE
+        <div className="font-display mt-6 text-[clamp(13px,1.3vw,17px)] tracking-[0.32em] text-purple-light">
+          忍道 — THE WAY OF THE SHINOBI
         </div>
-        <p className="mt-[26px] max-w-[520px] text-[clamp(15px,1.5vw,18px)] leading-[1.7] text-purple-muted">
-          A full-stack creative who builds calm, considered products — and chases the next
-          horizon like there&apos;s a whole village counting on it. This is the quest log.
-          Scroll to begin.
+        <p className="mt-5 max-w-[480px] text-[clamp(24px,1.2vw,16px)] font-normal leading-[1.6] text-cream/80">
+          Every mission is a chance to learn something new. I build thoughtful software across AI, Solana, and the modern web.
         </p>
-        <div className="mt-[38px] flex flex-wrap gap-4">
+        <div className="mt-[48px] flex flex-wrap gap-4">
           <motion.button
             onClick={() => scrollToSection("origin")}
-            className="inline-flex animate-[pulseGlow_2.6s_ease-in-out_infinite] cursor-pointer items-center gap-[10px] rounded-[3px] bg-orange px-[26px] py-[15px] font-mono text-[13px] font-bold tracking-[0.14em] text-ink uppercase"
+            className="inline-flex animate-[pulseGlow_2.6s_ease-in-out_infinite] cursor-pointer items-center gap-[10px] rounded-full border-4 border-white/60 bg-orange px-[28px] py-[14px] font-mono text-[13px] font-bold tracking-[0.14em] text-ink uppercase shadow-[0_0_0_1px_rgba(255,255,255,0.15)]"
             whileHover={{ y: -2 }}
           >
-            ▶ Begin the Quest
+            Start Mission
           </motion.button>
           <motion.button
             onClick={() => scrollToSection("missions")}
-            className="inline-flex cursor-pointer items-center gap-[10px] rounded-[3px] border border-cream/35 px-[26px] py-[15px] font-mono text-[13px] tracking-[0.14em] text-cream uppercase"
-            whileHover={{ background: "rgba(244,236,219,.08)", borderColor: "rgba(244,236,219,.6)" }}
+            className="inline-flex cursor-pointer items-center gap-[10px] rounded-full border-4 border-white/50 px-[28px] py-[14px] font-mono text-[13px] tracking-[0.14em] text-cream uppercase"
+            whileHover={{ background: "rgba(244,236,219,.08)", borderColor: "rgba(255,255,255,.85)" }}
           >
-            View Missions
+            Mission Log
           </motion.button>
         </div>
       </motion.div>
 
-      <div className="absolute bottom-[26px] left-1/2 z-6 flex -translate-x-1/2 flex-col items-center gap-2">
-        <span className="font-mono text-[10px] tracking-[0.32em] text-[#e9d9c4] uppercase">
-          scroll
-        </span>
-        <span
-          className="h-[34px] w-px animate-[scrollcue_1.8s_ease-in-out_infinite]"
-          style={{ background: "linear-gradient(#e9d9c4,transparent)" }}
-        />
-      </div>
     </section>
   );
 }
