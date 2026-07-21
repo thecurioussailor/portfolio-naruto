@@ -62,15 +62,19 @@ export default function Nav() {
                     : scrolled
                       ? "#5a4f6b"
                       : "#e8ddf5",
-                background: scrolled
-                  ? "transparent"
-                  : "rgba(255,255,255,0.08)",
-                backdropFilter: scrolled ? "none" : "blur(8px)",
-                border: scrolled
-                  ? "none"
-                  : activeSection === link.id
-                    ? "1px solid rgba(239,108,26,0.4)"
-                    : "1px solid rgba(255,255,255,0.12)",
+                background:
+                  activeSection === link.id
+                    ? "rgba(239,108,26,0.18)"
+                    : scrolled
+                      ? "transparent"
+                      : "rgba(255,255,255,0.08)",
+                backdropFilter: scrolled && activeSection !== link.id ? "none" : "blur(8px)",
+                border:
+                  activeSection === link.id
+                    ? "1px solid rgba(239,108,26,0.5)"
+                    : scrolled
+                      ? "none"
+                      : "1px solid rgba(255,255,255,0.12)",
               }}
             >
               {link.label}

@@ -17,7 +17,7 @@ export default function Origin() {
       className="relative overflow-hidden px-[7vw] py-[140px]"
       style={{
         background:
-          "radial-gradient(120% 80% at 80% 0%,#241a3c 0%,#181226 55%,#14101f 100%)",
+          "radial-gradient(120% 80% at 80% 0%,#f0e8d5 0%,#f4ecdb 55%,#efe6d0 100%)",
       }}
     >
       <motion.div
@@ -54,7 +54,7 @@ export default function Origin() {
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(180deg,rgba(20,16,31,0) 60%,rgba(20,16,31,.5) 100%)",
+                  "linear-gradient(180deg,rgba(244,236,219,0) 60%,rgba(244,236,219,.4) 100%)",
               }}
             />
           </div>
@@ -67,17 +67,17 @@ export default function Origin() {
           <div className="mb-[14px] font-mono text-xs tracking-[0.36em] text-orange uppercase">
             Stage 01 · 起源
           </div>
-          <h2 className="font-display mb-6 text-[clamp(34px,4.4vw,56px)] leading-[1.04] font-bold text-cream">
+          <h2 className="font-display mb-6 text-[clamp(34px,4.4vw,56px)] leading-[1.04] font-bold text-ink">
             Every legend starts
             <br />
             as an underdog.
           </h2>
-          <p className="mb-[18px] max-w-[520px] text-base leading-[1.85] text-purple-muted">
+          <p className="mb-[18px] max-w-[520px] text-base leading-[1.85] text-[#5a4f3e]">
             Placeholder origin story. Talk about how you started, what drew you to building,
             the late nights and the small wins. Keep it personal — this is the part people
             remember. Replace this text once the layout feels right.
           </p>
-          <p className="max-w-[520px] text-base leading-[1.85] text-purple-dim">
+          <p className="max-w-[520px] text-base leading-[1.85] text-[#7a6a55]">
             Add a second beat here — a turning point, a mentor, the moment it clicked. Two
             short paragraphs is plenty.
           </p>
@@ -85,12 +85,12 @@ export default function Origin() {
             {STATS.map((s) => (
               <div
                 key={s.label}
-                className="rounded-[4px] border border-cream/14 bg-[rgba(29,23,51,0.5)] px-5 py-4"
+                className="rounded-[4px] border border-ink/10 bg-white/50 px-5 py-4"
               >
-                <div className="font-display text-3xl leading-none text-orange-light">
+                <div className="font-display text-3xl leading-none text-orange">
                   {s.value}
                 </div>
-                <div className="mt-1.5 text-[11px] tracking-[0.2em] text-purple-dim uppercase">
+                <div className="mt-1.5 text-[11px] tracking-[0.2em] text-[#7a6a55] uppercase">
                   {s.label}
                 </div>
               </div>

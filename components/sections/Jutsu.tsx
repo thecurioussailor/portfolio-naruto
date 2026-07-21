@@ -14,12 +14,12 @@ const JUTSU = [
 
 export default function Jutsu() {
   return (
-    <section id="jutsu" className="relative overflow-hidden bg-ink px-[7vw] py-[140px]">
+    <section id="jutsu" className="relative overflow-hidden px-[7vw] py-[140px]" style={{ background: "#efe6d0" }}>
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(60% 50% at 15% 20%,rgba(111,166,83,.10),transparent 70%),radial-gradient(50% 50% at 90% 80%,rgba(239,108,26,.10),transparent 70%)",
+            "radial-gradient(60% 50% at 15% 20%,rgba(111,166,83,.12),transparent 70%),radial-gradient(50% 50% at 90% 80%,rgba(239,108,26,.10),transparent 70%)",
         }}
       />
       <div className="relative mx-auto max-w-[1200px]">
@@ -27,10 +27,10 @@ export default function Jutsu() {
           <div className="mb-[14px] font-mono text-xs tracking-[0.36em] text-orange uppercase">
             Stage 02 · 術
           </div>
-          <h2 className="font-display text-[clamp(34px,4.4vw,56px)] font-bold text-cream">
+          <h2 className="font-display text-[clamp(34px,4.4vw,56px)] font-bold text-ink">
             Jutsu Mastered
           </h2>
-          <p className="mt-[14px] text-[15px] text-purple-dim">
+          <p className="mt-[14px] text-[15px] text-[#7a6a55]">
             The techniques in the arsenal — and how deep the chakra runs.
           </p>
         </Reveal>
@@ -40,24 +40,20 @@ export default function Jutsu() {
             <Reveal key={j.title} delay={(i % 3) * 80}>
               <motion.div
                 whileHover={{ y: -4, borderColor: "rgba(239,108,26,.5)" }}
-                className="relative overflow-hidden rounded-md border border-cream/12 p-[26px]"
-                style={{
-                  background:
-                    "linear-gradient(180deg,rgba(36,28,60,.8),rgba(24,18,38,.8))",
-                }}
+                className="relative overflow-hidden rounded-md border border-ink/10 bg-white/60 p-[26px] shadow-[0_4px_24px_rgba(0,0,0,0.06)] backdrop-blur-sm"
               >
                 <div className="mb-[18px] flex items-start justify-between">
                   <div>
-                    <div className="font-display text-xl text-cream">{j.title}</div>
+                    <div className="font-display text-xl text-ink">{j.title}</div>
                     <div className="mt-1 text-[11px] tracking-[0.2em] text-orange uppercase">
                       {j.tags}
                     </div>
                   </div>
-                  <span className="rounded-full border border-green/40 px-2 py-0.5 font-mono text-[11px] text-green">
+                  <span className="rounded-full border border-green/50 px-2 py-0.5 font-mono text-[11px] text-[#4a7a35]">
                     Lv. {j.level}
                   </span>
                 </div>
-                <div className="h-[7px] overflow-hidden rounded-md bg-white/[0.07]">
+                <div className="h-[7px] overflow-hidden rounded-md bg-ink/10">
                   <motion.div
                     className="h-full rounded-md"
                     style={{
@@ -69,7 +65,7 @@ export default function Jutsu() {
                     transition={{ duration: 1.4, ease: [0.2, 0.8, 0.2, 1] }}
                   />
                 </div>
-                <div className="mt-2 flex justify-between font-mono text-[10px] text-purple-dim">
+                <div className="mt-2 flex justify-between font-mono text-[10px] text-[#7a6a55]">
                   <span>CHAKRA</span>
                   <span>{j.chakra}%</span>
                 </div>

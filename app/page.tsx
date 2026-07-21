@@ -1,5 +1,9 @@
+"use client";
+
+import { useState } from "react";
 import Nav from "@/components/ui/Nav";
 import ParticleField from "@/components/ui/ParticleField";
+import IntroOverlay from "@/components/ui/IntroOverlay";
 import Hero from "@/components/sections/Hero";
 import Origin from "@/components/sections/Origin";
 import Jutsu from "@/components/sections/Jutsu";
@@ -9,17 +13,24 @@ import Summon from "@/components/sections/Summon";
 import Footer from "@/components/sections/Footer";
 
 export default function Home() {
+  const [heroReady, setHeroReady] = useState(false);
+
   return (
-    <div className="relative w-full bg-ink">
-      <ParticleField />
-      <Nav />
-      <Hero />
-      <Origin />
-      <Jutsu />
-      <Missions />
-      <Journey />
-      <Summon />
-      <Footer />
+    <div className="relative w-full bg-[#f4ecdb]">
+      <IntroOverlay onDone={() => setHeroReady(true)} />
+      {heroReady && (
+        <>
+          <ParticleField />
+          <Nav />
+          <Hero />
+          <Missions />
+          <Origin />
+          <Jutsu />
+          <Journey />
+          <Summon />
+          <Footer />
+        </>
+      )}
     </div>
   );
 }

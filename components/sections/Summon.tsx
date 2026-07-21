@@ -8,18 +8,18 @@ const SOCIALS = ["GitHub", "LinkedIn", "X / Twitter", "Dribbble"];
 
 export default function Summon() {
   return (
-    <section id="summon" className="relative overflow-hidden bg-ink px-[7vw] py-[140px]">
+    <section id="summon" className="relative overflow-hidden px-[7vw] py-[140px]" style={{ background: "#f0e8d5" }}>
       <div className="mx-auto grid max-w-[1180px] items-center gap-[60px] lg:grid-cols-[1.05fr_0.95fr]">
         <Reveal>
           <div className="mb-[14px] font-mono text-xs tracking-[0.36em] text-orange uppercase">
             Stage 05 · 召喚
           </div>
-          <h2 className="font-display mb-[22px] text-[clamp(34px,4.4vw,56px)] leading-[1.05] font-bold text-cream">
+          <h2 className="font-display mb-[22px] text-[clamp(34px,4.4vw,56px)] leading-[1.05] font-bold text-ink">
             Summon me for
             <br />
             the next mission.
           </h2>
-          <p className="mb-[34px] max-w-[480px] text-base leading-[1.8] text-purple-muted">
+          <p className="mb-[34px] max-w-[480px] text-base leading-[1.8] text-[#5a4f3e]">
             Placeholder note. Got a quest worth taking? Whether it&apos;s a product to build,
             a system to design, or a team to join — let&apos;s talk.
           </p>
@@ -36,7 +36,7 @@ export default function Summon() {
                 key={s}
                 href="#"
                 whileHover={{ borderColor: "#ef6c1a", color: "#ff8a3d" }}
-                className="rounded-[3px] border border-cream/20 px-4 py-2.5 font-mono text-xs tracking-[0.1em] text-purple-light"
+                className="rounded-[3px] border border-ink/20 px-4 py-2.5 font-mono text-xs tracking-[0.1em] text-[#5a4f3e]"
               >
                 {s}
               </motion.a>

@@ -61,7 +61,7 @@ export default function Journey() {
         className="absolute inset-0 z-[1]"
         style={{
           background:
-            "linear-gradient(180deg,#14101f 0%,rgba(20,16,31,.62) 18%,rgba(20,16,31,.62) 82%,#14101f 100%)",
+            "linear-gradient(180deg,#f4ecdb 0%,rgba(244,236,219,.72) 18%,rgba(244,236,219,.72) 82%,#f4ecdb 100%)",
         }}
       />
 
@@ -71,10 +71,10 @@ export default function Journey() {
           <div className="mb-[14px] font-mono text-xs tracking-[0.36em] text-orange-light uppercase">
             Stage 04 · 旅
           </div>
-          <h2 className="font-display text-[clamp(34px,4.4vw,56px)] font-bold text-cream-warm text-shadow-[0_2px_20px_rgba(0,0,0,0.5)]">
+          <h2 className="font-display text-[clamp(34px,4.4vw,56px)] font-bold text-ink">
             The Journey
           </h2>
-          <p className="mt-[14px] text-[15px] text-[#e0d2c2] text-shadow-[0_1px_8px_rgba(0,0,0,0.5)]">
+          <p className="mt-[14px] text-[15px] text-[#7a6a55]">
             Genin to Jōnin — every rank earned on the road.
           </p>
         </Reveal>
@@ -95,12 +95,12 @@ export default function Journey() {
                   boxShadow: `0 0 0 3px ${item.dotColor}4d`,
                 }}
               />
-              <div className="rounded-md border border-cream/14 bg-[rgba(20,16,31,0.72)] px-[26px] py-[22px] backdrop-blur-[6px]">
+              <div className="rounded-md border border-ink/10 bg-white/65 px-[26px] py-[22px] backdrop-blur-[6px] shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
                 <div className="flex flex-wrap items-baseline gap-[14px]">
-                  <span className="font-mono text-[13px] tracking-[0.1em] text-orange-light">
+                  <span className="font-mono text-[13px] tracking-[0.1em] text-orange">
                     {item.year}
                   </span>
-                  <span className="font-display text-[21px] text-cream">{item.title}</span>
+                  <span className="font-display text-[21px] text-ink">{item.title}</span>
                   <span
                     className="rounded-full border px-2 py-0.5 text-[10px] tracking-[0.2em] uppercase"
                     style={{ borderColor: `${item.rankColor}66`, color: item.rankColor }}
@@ -108,7 +108,7 @@ export default function Journey() {
                     {item.rank}
                   </span>
                 </div>
-                <p className="mt-2.5 text-sm leading-[1.7] text-purple-muted">{item.desc}</p>
+                <p className="mt-2.5 text-sm leading-[1.7] text-[#7a6a55]">{item.desc}</p>
               </div>
             </Reveal>
           ))}

@@ -34,7 +34,7 @@ export default function ParticleField() {
     const leafColors = ["#6fa653", "#5b8c4a", "#ef6c1a", "#c9863a"];
     const leaves: Leaf[] = Array.from({ length: 16 }, () => ({
       x: rnd(0, 1),
-      y: rnd(0, 1),
+      y: rnd(-0.2, 0),   // start above viewport so first drop feels natural
       s: rnd(7, 14),
       vx: rnd(-0.15, -0.04),
       vy: rnd(0.06, 0.18),
@@ -95,7 +95,7 @@ export default function ParticleField() {
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none fixed inset-0 z-[2] h-full w-full"
+      className="pointer-events-none fixed inset-0 z-2 h-full w-full"
     />
   );
 }
