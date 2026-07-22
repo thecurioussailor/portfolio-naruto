@@ -27,7 +27,7 @@ function spriteFor(phase: ScenePhase): string {
 }
 
 /** The original: runs in, performs the shadow-clone jutsu, thumbs-up, runs out. */
-export function NarutoCharacter({ phase, x, y, height = 62 }: NarutoProps) {
+export function NarutoCharacter({ phase, x, y, height = 80 }: NarutoProps) {
   const running = phase === "running" || phase === "runOut";
   const runFrame = useRunCycle(running);
   const visible =
@@ -50,7 +50,7 @@ export function NarutoCharacter({ phase, x, y, height = 62 }: NarutoProps) {
       transition={
         phase === "runOut"
           ? { duration: 0.62, ease: [0.5, 0.05, 0.55, 0.95], opacity: { times: [0, 0.85, 1], duration: 0.72 } }
-          : { duration: 0.62, ease: [0.45, 0.05, 0.25, 1] }
+          : { duration: 1, ease: [0.45, 0.05, 0.25, 1] }
       }
     >
       <motion.img

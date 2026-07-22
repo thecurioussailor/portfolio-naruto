@@ -70,12 +70,47 @@ export interface CloneConfig {
   tilt?: number;
 }
 
-/** "Mission Log" → letters M i s s i o n L o g (indices 0..9, spaces skipped) */
+/**
+ * "Mission Log" non-space letters by index:
+ *  0=M 1=i 2=s 3=s 4=i 5=o 6=n 7=L 8=o 9=g
+ *
+ * Three clones only:
+ *  - sitter  → sits on top of "M" (index 0), legs over left edge
+ *  - hanger  → hangs from the dot/top of second "i" (index 4)
+ *  - pointer → leans on "g" at end of "Log" (index 9), tilted to guide eye down
+ */
 export const CLONES: CloneConfig[] = [
-  { id: 'sitter',  pose: 'sit',   sprite: NarutoSprites.sit.edge,           letterIndex: 0, height: 48, glyphTop: 0.20, overlap: 15 },
-  { id: 'hanger',  pose: 'hang',  sprite: NarutoSprites.sit.hang,           letterIndex: 4, height: 54, glyphTop: 0.26, overlap: 0  },
-  { id: 'leaner',  pose: 'lean',  sprite: NarutoSprites.sit.lean,           letterIndex: 7, height: 46, glyphTop: 0.76, overlap: 2, dx: -0.6, tilt: 6 },
-  { id: 'pointer', pose: 'point', sprite: NarutoSprites.interaction.point,  letterIndex: 9, height: 55, glyphTop: 0.44, overlap: 6  },
+  {
+    id: 'sitter',
+    pose: 'sit',
+    sprite: NarutoSprites.sit.edge,
+    letterIndex: 0,
+    height: 44,
+    glyphTop: 0.0,   // sit flush on the very top of the M
+    overlap: 8,
+    dx: -0.3,        // nudge left so legs hang over the left stroke
+  },
+  {
+    id: 'hanger',
+    pose: 'hang',
+    sprite: NarutoSprites.sit.hang,
+    letterIndex: 4,   // second "i"
+    height: 50,
+    glyphTop: 0.08,  // hang from near the top / dot area
+    overlap: 0,
+    dx: 0.1,
+  },
+  {
+    id: 'pointer',
+    pose: 'point',
+    sprite: NarutoSprites.interaction.point,
+    letterIndex: 9,   // "g"
+    height: 52,
+    glyphTop: 0.10,  // sit on top of the g, not mid-stroke
+    overlap: 10,
+    dx: 0.2,
+    tilt: 14,        // lean forward so pointing gesture aims downward toward cards
+  },
 ];
 
 export const TIMELINE = {

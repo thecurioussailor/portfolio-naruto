@@ -109,10 +109,11 @@ export function ShadowCloneScene({ cardsRef }: ShadowCloneSceneProps) {
     phase === "runOut" ||
     phase === "settled";
 
+  // Original Naruto stands just above the heading baseline, left of center
   const origin = seats.length
     ? {
-        x: (seats[0].x + seats[1].x) / 2 + 40,
-        y: Math.min(...seats.map((s) => s.bottom)) - 14,
+        x: seats[0].x - 60,
+        y: Math.min(...seats.map((s) => s.bottom)) + 28,
       }
     : null;
 
