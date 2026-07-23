@@ -25,13 +25,13 @@ export default function Jutsu() {
       <div className="relative mx-auto max-w-[1200px]">
         <Reveal className="mb-[60px] text-center">
           <div className="mb-[14px] font-mono text-xs tracking-[0.36em] text-orange uppercase">
-            Stage 02 · 術
+            術
           </div>
           <h2 className="font-display text-[clamp(34px,4.4vw,56px)] font-bold text-ink">
-            Jutsu Mastered
+            Jutsu
           </h2>
           <p className="mt-[14px] text-[15px] text-[#7a6a55]">
-            The techniques in the arsenal — and how deep the chakra runs.
+            Technologies, frameworks,<br />and tools I use to build modern software.
           </p>
         </Reveal>
 

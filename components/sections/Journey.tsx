@@ -69,13 +69,13 @@ export default function Journey() {
 
         <Reveal className="mb-16 text-center">
           <div className="mb-[14px] font-mono text-xs tracking-[0.36em] text-orange-light uppercase">
-            Stage 04 · 旅
+            旅
           </div>
           <h2 className="font-display text-[clamp(34px,4.4vw,56px)] font-bold text-ink">
-            The Journey
+            Journey
           </h2>
           <p className="mt-[14px] text-[15px] text-[#7a6a55]">
-            Genin to Jōnin — every rank earned on the road.
+            Where I've worked,<br />what I've learned, and how I've grown.
           </p>
         </Reveal>
 

@@ -24,9 +24,9 @@ export default function Home() {
           <Nav />
           <Hero />
           <Missions />
-          <Origin />
-          <Jutsu />
           <Journey />
+          <Jutsu />
+          <Origin />
           <Summon />
           <Footer />
         </>

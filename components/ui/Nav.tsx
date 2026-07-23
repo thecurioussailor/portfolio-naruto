@@ -5,10 +5,10 @@ import { useScrollProgress } from "@/lib/useScrollProgress";
 import { scrollToSection } from "@/lib/scrollTo";
 
 const LINKS = [
-  { id: "origin", label: "Origin" },
-  { id: "jutsu", label: "Jutsu" },
   { id: "missions", label: "Missions" },
   { id: "journey", label: "Journey" },
+  { id: "jutsu", label: "Jutsu" },
+  { id: "origin", label: "Origin" },
 ];
 
 export default function Nav() {

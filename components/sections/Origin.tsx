@@ -65,13 +65,14 @@ export default function Origin() {
 
         <Reveal delay={120}>
           <div className="mb-[14px] font-mono text-xs tracking-[0.36em] text-orange uppercase">
-            Stage 01 · 起源
+            起源
           </div>
           <h2 className="font-display mb-6 text-[clamp(34px,4.4vw,56px)] leading-[1.04] font-bold text-ink">
-            Every legend starts
-            <br />
-            as an underdog.
+            Origin
           </h2>
+          <p className="mb-6 max-w-[520px] text-[15px] text-[#7a6a55]">
+            The curiosity, discipline,<br />and experiences that shaped the engineer I am today.
+          </p>
           <p className="mb-[18px] max-w-[520px] text-base leading-[1.85] text-[#5a4f3e]">
             Placeholder origin story. Talk about how you started, what drew you to building,
             the late nights and the small wins. Keep it personal — this is the part people
