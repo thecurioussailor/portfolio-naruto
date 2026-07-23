@@ -229,7 +229,7 @@ export default function Missions() {
   return (
     <section
       id="missions"
-      className="relative overflow-hidden px-[7vw] pt-[140px] pb-[160px]"
+      className="relative px-[7vw] pt-[140px] pb-[160px]"
       style={{
         background:
           "radial-gradient(120% 80% at 20% 0%,#f0e8d5 0%,#f4ecdb 55%,#efe6d0 100%)",

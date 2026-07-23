@@ -56,60 +56,189 @@ export const NarutoSprites = {
   },
 } as const;
 
-export type ClonePose = 'sit' | 'hang' | 'lean' | 'point';
+export type ClonePose = 'sit' | 'hang' | 'lean' | 'point' | 'stand' | 'cheer' | 'wave' | 'peace';
+
+/**
+ * zone:
+ *   "letter" — anchored to a specific glyph (uses letterIndex + glyphTop + overlap + dx)
+ *   "above"  — floats above the heading (uses ax: fraction of heading width, ay: px above heading top)
+ *   "flank"  — left or right of the heading (uses side + fx: px from edge, fy: fraction of heading height)
+ */
+export type CloneZone = 'letter' | 'above' | 'flank';
 
 export interface CloneConfig {
   id: string;
   pose: ClonePose;
   sprite: string;
-  letterIndex: number;
   height: number;
-  glyphTop: number;
-  overlap: number;
-  dx?: number;
   tilt?: number;
+  // letter zone
+  zone?: CloneZone;
+  letterIndex?: number;
+  glyphTop?: number;
+  overlap?: number;
+  dx?: number;
+  // above zone
+  ax?: number;   // 0–1 fraction of heading width
+  ay?: number;   // px above heading top (positive = higher up)
+  // flank zone
+  side?: 'left' | 'right';
+  fx?: number;   // px offset from heading edge (positive = outward)
+  fy?: number;   // 0–1 fraction of heading height from top
 }
 
 /**
- * "Mission Log" non-space letters by index:
- *  0=M 1=i 2=s 3=s 4=i 5=o 6=n 7=L 8=o 9=g
+ * 14 clones across three zones.
  *
- * Three clones only:
- *  - sitter  → sits on top of "M" (index 0), legs over left edge
- *  - hanger  → hangs from the dot/top of second "i" (index 4)
- *  - pointer → leans on "g" at end of "Log" (index 9), tilted to guide eye down
+ * "Mission Log" letter indices (non-space):
+ *   0=M 1=i 2=s 3=s 4=i 5=o 6=n  7=L 8=o 9=g
+ *
+ * Flank zone: fx is px inset FROM the heading edge (positive = still inside viewport).
+ * fy is a 0–1 fraction of heading height, used to vertically stack flankers.
+ * Multiple flankers on the same side use increasing fx to step outward.
  */
 export const CLONES: CloneConfig[] = [
+  // ── ON LETTERS (4) ──────────────────────────────────────────
   {
     id: 'sitter',
+    zone: 'letter',
     pose: 'sit',
     sprite: NarutoSprites.sit.edge,
     letterIndex: 0,
     height: 44,
-    glyphTop: 0.0,   // sit flush on the very top of the M
-    overlap: 8,
-    dx: -0.3,        // nudge left so legs hang over the left stroke
+    glyphTop: -0.05,
+    overlap: 6,
+    dx: -0.25,
   },
   {
     id: 'hanger',
+    zone: 'letter',
     pose: 'hang',
     sprite: NarutoSprites.sit.hang,
-    letterIndex: 4,   // second "i"
-    height: 50,
-    glyphTop: 0.08,  // hang from near the top / dot area
+    letterIndex: 4,
+    height: 46,
+    glyphTop: -0.08,
     overlap: 0,
     dx: 0.1,
   },
   {
+    id: 'leaner',
+    zone: 'letter',
+    pose: 'lean',
+    sprite: NarutoSprites.sit.lean,
+    letterIndex: 6,
+    height: 48,
+    glyphTop: 0.3,
+    overlap: 8,
+    dx: 0.8,
+  },
+  {
     id: 'pointer',
+    zone: 'letter',
     pose: 'point',
     sprite: NarutoSprites.interaction.point,
-    letterIndex: 9,   // "g"
+    letterIndex: 9,
+    height: 48,
+    glyphTop: -0.01,
+    overlap: 8,
+    dx: -0.9,
+    tilt: 10,
+  },
+
+  // ── ABOVE THE HEADING (4) ────────────────────────────────────
+  {
+    id: 'above-1',
+    zone: 'above',
+    pose: 'stand',
+    sprite: NarutoSprites.idle.idle,
+    height: 54,
+    ax: 0.3,
+    ay: 20,
+  },
+  {
+    id: 'above-2',
+    zone: 'above',
+    pose: 'cheer',
+    sprite: NarutoSprites.interaction.cheer,
+    height: 56,
+    ax: 0.44,
+    ay: 47,
+  },
+  {
+    id: 'above-3',
+    zone: 'above',
+    pose: 'wave',
+    sprite: NarutoSprites.interaction.wave,
     height: 52,
-    glyphTop: 0.10,  // sit on top of the g, not mid-stroke
-    overlap: 10,
-    dx: 0.2,
-    tilt: 14,        // lean forward so pointing gesture aims downward toward cards
+    ax: 0.62,
+    ay: 65,
+  },
+  {
+    id: 'above-4',
+    zone: 'above',
+    pose: 'peace',
+    sprite: NarutoSprites.interaction.peace,
+    height: 54,
+    ax: 0.72,
+    ay: 18,
+  },
+
+  // ── LEFT FLANK (3) — ax negative = left of heading ──────────
+  {
+    id: 'left-1',
+    zone: 'above',
+    pose: 'stand',
+    sprite: NarutoSprites.idle.look,
+    height: 48,
+    ax: 0.405,
+    ay: 54,
+  },
+  {
+    id: 'left-2',
+    zone: 'above',
+    pose: 'cheer',
+    sprite: NarutoSprites.interaction.cheer,
+    height: 54,
+    ax: -0.10,
+    ay: 60,
+  },
+  {
+    id: 'left-3',
+    zone: 'above',
+    pose: 'peace',
+    sprite: NarutoSprites.interaction.peace,
+    height: 52,
+    ax: 0.26,
+    ay: 18,
+  },
+
+  // ── RIGHT FLANK (3) — ax > 1.0 = right of heading ───────────
+  // {
+  //   id: 'right-1',
+  //   zone: 'above',
+  //   pose: 'wave',
+  //   sprite: NarutoSprites.interaction.wave,
+  //   height: 48,
+  //   ax: 0.7,
+  //   ay: 20,
+  // },
+  {
+    id: 'right-2',
+    zone: 'above',
+    pose: 'stand',
+    sprite: NarutoSprites.idle.idle,
+    height: 54,
+    ax: 0.68,
+    ay: 20,
+  },
+  {
+    id: 'right-3',
+    zone: 'above',
+    pose: 'sit',
+    sprite: NarutoSprites.sit.cross,
+    height: 50,
+    ax: 0.556,
+    ay: 55,
   },
 ];
 
@@ -121,9 +250,7 @@ export const TIMELINE = {
   grin:         2850,
   handSign:     3250,
   firstPoof:    3700,
-  poofStagger:   100,
-  thumbsUp:     4400,
-  runOut:       5500,
-  cloneDepart: 12200,
-  departStagger: 150,
+  poofStagger:   150,   // stagger between each clone appearing
+  cloneDepart:  10000,  // auto-depart if cards never scroll into view
+  departStagger: 120,
 } as const;

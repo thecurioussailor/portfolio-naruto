@@ -9,6 +9,7 @@ interface CloneProps {
   x: number;
   y: number;
   index: number;
+  departDelay?: number;
 }
 
 const idleAnimations: Record<CloneConfig["pose"], TargetAndTransition> = {
@@ -16,11 +17,16 @@ const idleAnimations: Record<CloneConfig["pose"], TargetAndTransition> = {
   hang:  { rotate: [-2.8, 2.8] },
   lean:  { scaleY: [1, 1.015] },
   point: { rotate: [0, 3, 0] },
+  stand: { y: [0, -2, 0] },
+  cheer: { rotate: [-4, 4] },
+  wave:  { rotate: [0, 6, 0] },
+  peace: { y: [0, -3, 0] },
 };
 
-/** One shadow clone: pops from smoke, tiny hop, squash-settle, then idles forever. */
-export function Clone({ config, x, y, index }: CloneProps) {
+export function Clone({ config, x, y, index, departDelay = 0 }: CloneProps) {
   const isHang = config.pose === "hang";
+  const appearDelay = index * 0.15;
+
   return (
     <motion.div
       style={{
@@ -30,10 +36,10 @@ export function Clone({ config, x, y, index }: CloneProps) {
         willChange: "transform",
         transformOrigin: isHang ? "50% 6%" : "50% 100%",
       }}
-      initial={isHang ? { opacity: 0, y: -6 } : { opacity: 0, y: 4, scale: 0.7 }}
-      animate={isHang ? { opacity: 1, y: 0 } : { opacity: 1, y: [4, -9, 0], scale: [0.7, 1.02, 1] }}
-      exit={{ opacity: 0, scale: 0.55, y: 3, transition: { duration: 0.19, ease: [0.5, 0, 0.8, 0.4] } }}
-      transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+      initial={isHang ? { opacity: 0, y: -6 } : { opacity: 0, y: 6, scale: 0.65 }}
+      animate={isHang ? { opacity: 1, y: 0 } : { opacity: 1, y: [6, -8, 0], scale: [0.65, 1.05, 1] }}
+      exit={{ opacity: 0, scale: 0.5, y: 4, transition: { duration: 0.2, ease: [0.5, 0, 0.8, 0.4], delay: departDelay } }}
+      transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1], delay: appearDelay }}
     >
       <motion.img
         src={config.sprite}
@@ -44,15 +50,15 @@ export function Clone({ config, x, y, index }: CloneProps) {
           height: config.height,
           rotate: config.tilt ?? 0,
           transformOrigin: isHang ? "50% 6%" : "50% 20%",
-          filter: "drop-shadow(0 4px 6px rgba(0,0,0,.35))",
+          filter: "drop-shadow(0 4px 8px rgba(0,0,0,.30))",
         }}
         animate={idleAnimations[config.pose]}
         transition={{
-          duration: 2.4 + index * 0.2,
+          duration: 2.2 + index * 0.3,
           repeat: Infinity,
           repeatType: "mirror",
           ease: "easeInOut",
-          delay: 0.4,
+          delay: appearDelay + 0.3,
         }}
       />
     </motion.div>

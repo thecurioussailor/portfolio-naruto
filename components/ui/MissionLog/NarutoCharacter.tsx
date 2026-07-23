@@ -12,27 +12,21 @@ interface NarutoProps {
   height?: number;
 }
 
-const RUN_DISTANCE  = 200;
-const EXIT_DISTANCE = 180;
+const RUN_DISTANCE = 200;
 
 function spriteFor(phase: ScenePhase): string {
   switch (phase) {
-    case "landed":   return NarutoSprites.jump.land;
-    case "grin":     return NarutoSprites.idle.grin;
-    case "handSign": return NarutoSprites.shadowClone.handSign;
-    case "clones":   return NarutoSprites.shadowClone.handSign;
-    case "thumbsUp": return NarutoSprites.interaction.thumbsUp;
-    default:         return NarutoSprites.idle.idle;
+    case "landed": return NarutoSprites.jump.land;
+    case "grin":   return NarutoSprites.idle.grin;
+    default:       return NarutoSprites.shadowClone.handSign;
   }
 }
 
-/** The original: runs in, performs the shadow-clone jutsu, thumbs-up, runs out. */
+/** Runs in, does the hand sign, then stays frozen in hand-sign permanently. */
 export function NarutoCharacter({ phase, x, y, height = 80 }: NarutoProps) {
-  const running = phase === "running" || phase === "runOut";
+  const running = phase === "running";
   const runFrame = useRunCycle(running);
-  const visible =
-    phase !== "idle" && phase !== "leaf" &&
-    phase !== "settled" && phase !== "departing" && phase !== "done";
+  const visible = phase !== "idle" && phase !== "leaf";
 
   if (!visible) return null;
 
@@ -42,16 +36,8 @@ export function NarutoCharacter({ phase, x, y, height = 80 }: NarutoProps) {
     <motion.div
       style={{ position: "absolute", left: x, top: y - height, willChange: "transform" }}
       initial={{ x: -RUN_DISTANCE, opacity: 0 }}
-      animate={
-        phase === "runOut"
-          ? { x: EXIT_DISTANCE, opacity: [1, 1, 0] }
-          : { x: 0, opacity: 1 }
-      }
-      transition={
-        phase === "runOut"
-          ? { duration: 0.62, ease: [0.5, 0.05, 0.55, 0.95], opacity: { times: [0, 0.85, 1], duration: 0.72 } }
-          : { duration: 1, ease: [0.45, 0.05, 0.25, 1] }
-      }
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 1, ease: [0.45, 0.05, 0.25, 1] }}
     >
       <motion.img
         src={src}
@@ -61,8 +47,6 @@ export function NarutoCharacter({ phase, x, y, height = 80 }: NarutoProps) {
         animate={
           phase === "landed"
             ? { rotate: [0, -7, -7, 7, 7, 0], x: [0, -2, -2, 2, 2, 0] }
-            : phase === "thumbsUp"
-            ? { rotate: [0, 4, 0], y: [0, 1.5, 0] }
             : { rotate: 0, x: 0, y: 0 }
         }
         transition={

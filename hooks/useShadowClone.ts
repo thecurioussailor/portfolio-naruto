@@ -11,8 +11,6 @@ export type ScenePhase =
   | "grin"
   | "handSign"
   | "clones"
-  | "thumbsUp"
-  | "runOut"
   | "settled"
   | "departing"
   | "done";
@@ -45,9 +43,7 @@ export function useShadowClone() {
     at(() => setPhase("grin"),      TIMELINE.grin);
     at(() => setPhase("handSign"),  TIMELINE.handSign);
     at(() => setPhase("clones"),    TIMELINE.firstPoof);
-    at(() => setPhase("thumbsUp"),  TIMELINE.thumbsUp);
-    at(() => setPhase("runOut"),    TIMELINE.runOut);
-    at(() => setPhase("settled"),   TIMELINE.runOut + 800);
+    at(() => setPhase("settled"),   TIMELINE.firstPoof + TIMELINE.poofStagger * 9 + 600);
     at(depart,                      TIMELINE.cloneDepart);
   }, [depart]);
 
